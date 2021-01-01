@@ -138,20 +138,30 @@ catch (e)
 }
 console.log("After latest addition:-")
 addressBook1.forEach(contact => console.log(contact.toString()));
+console.log("person present in the city: " + personInCity("Arif", "Pilani", addressBook1));
+console.log("person present in the state: " + personInState("Tushar", "Delhi", addressBook1));
+
+function personInCity(personName, cityName, book)
+{
+    return book.some(contactObject => (contactObject.firstName == personName && contactObject.city == cityName));
+}
+
+function personInState(personName, stateName, book)
+{
+    return book.some(contactObject => (contactObject.firstName == personName && contactObject.state == stateName));
+}
+
 
 function addNewContact(contact, addressBook1)
 {
-    let status = addressBook1.find(contactObject => {
-        return contact.firstName == contactObject.firstName;
-    });
-    
+    let status = addressBook1.some(contactObject => contactObject.firstName == contact.firstName);
     if(!status)
     {
         addressBook1.push(contact);
     }
     else
     {
-        throw "Entry already exist!!"
+        throw "Entry already exist!!";
     }
 }
 
