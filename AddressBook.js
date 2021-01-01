@@ -144,7 +144,14 @@ console.log("persons in the city: " + searchByCity("Pilani", addressBook1));
 console.log("persons in the state: " + searchByState("Delhi", addressBook1));
 console.log("count persons by city: " + countByCity("Pilani", addressBook1));
 console.log("count persons by state: " + countByState("Delhi", addressBook1));
+console.log("Sorted by Person name:-");
+sortedAddressBook();
+console.log(addressBook1.toString());
 
+function sortedAddressBook()
+{
+    addressBook1.sort((contactObject, contact) => contactObject.firstName.localeCompare(contact.firstName));
+}
 
 function countByCity(cityName, book)
 {
