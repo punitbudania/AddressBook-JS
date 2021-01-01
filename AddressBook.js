@@ -145,12 +145,37 @@ console.log("persons in the state: " + searchByState("Delhi", addressBook1));
 console.log("count persons by city: " + countByCity("Pilani", addressBook1));
 console.log("count persons by state: " + countByState("Delhi", addressBook1));
 console.log("Sorted by Person name:-");
-sortedAddressBook();
-console.log(addressBook1.toString());
+sortedAddressBook("First Name");
+console.log(addressBook1);
+console.log("Sorted by City:-");
+sortedAddressBook("City");
+console.log(addressBook1);
+console.log("Sorted by State:-");
+sortedAddressBook("State");
+console.log(addressBook1);
+console.log("Sorted by Zip:-");
+sortedAddressBook("Zip");
+console.log(addressBook1);
 
-function sortedAddressBook()
+function sortedAddressBook(property)
 {
-    addressBook1.sort((contactObject, contact) => contactObject.firstName.localeCompare(contact.firstName));
+    switch(property)
+    {
+        case "First Name":
+            addressBook1.sort((contactObject, contact) => contactObject.firstName.localeCompare(contact.firstName));
+            break;
+        case "City":
+            addressBook1.sort((contactObject, contact) => contactObject.city.localeCompare(contact.city));
+            break;
+        case "State":
+            addressBook1.sort((contactObject, contact) => contactObject.state.localeCompare(contact.state));
+            break;
+        case "Zip":
+            addressBook1.sort(contact => contact.zip);
+            break;
+        default:
+            break; 
+    }
 }
 
 function countByCity(cityName, book)
