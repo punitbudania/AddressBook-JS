@@ -120,3 +120,60 @@ catch (e)
 }
 
 addressBook.forEach(contact => console.log(contact.toString()));
+
+let contact = searchPerson("Arif", addressBook);
+updateContact(contact, "Zip", 333027);
+console.log("Updated Contact: " + contact.toString());
+
+function searchPerson(personName, addressBook)
+{
+    let contact;
+    addressBook.forEach(contactObject => {
+        if (contactObject.firstName == personName)
+        {
+            contact = contactObject;
+        }
+    });
+    return contact;
+}
+
+function updateContact(contact, property, updatedEntry)
+{
+    try
+    {
+        switch(property)
+        {
+            case "First Nmae":
+                contact.firstName = updatedEntry;
+                break;
+            case "Last Name":
+                contact.lastName = updatedEntry;
+                break;
+            case "Address":
+                contact.address = updatedEntry;
+                break;
+            case "City":
+                contact.city = updatedEntry;
+                break;
+            case "State":
+                contact.state = updatedEntry;
+                break;
+            case "Zip":
+                contact.zip = updatedEntry;
+                break;
+            case "Phone Number":
+                contact.phoneNumber = updatedEntry;
+                break;
+            case "Email":
+                contact.email = updatedEntry;
+                break;
+            default:
+                break;
+        }
+    } 
+    catch (error) 
+    {
+        console.log(error);
+        console.log("Unable to Update!");
+    }
+}
