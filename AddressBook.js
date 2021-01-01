@@ -124,10 +124,36 @@ addressBook.forEach(contact => console.log(contact.toString()));
 let contact = searchPerson("Arif", addressBook);
 updateContact(contact, "Zip", 333027);
 console.log("Updated Contact: " + contact.toString());
-let addressBook1 = deleteContact("Tushar", addressBook);
+let addressBook1 = deleteContact("Arif", addressBook);
 console.log("Contact list after delete opteration")
 addressBook1.forEach(contact => console.log(contact.toString()));
 console.log("No. of Contacts: " + countEntries(addressBook1));
+try
+{
+    addNewContact( new Contact("Arif", "Khan", "Malta Road", "Pilani", "Rajasthan", 330026, "91 9776543210", "akhan@gmail.com"), addressBook1);
+}
+catch (e)
+{
+    console.log(e);
+}
+console.log("After latest addition:-")
+addressBook1.forEach(contact => console.log(contact.toString()));
+
+function addNewContact(contact, addressBook1)
+{
+    let status = addressBook1.find(contactObject => {
+        return contact.firstName == contactObject.firstName;
+    });
+    
+    if(!status)
+    {
+        addressBook1.push(contact);
+    }
+    else
+    {
+        throw "Entry already exist!!"
+    }
+}
 
 function countEntries(addressBook)
 {
