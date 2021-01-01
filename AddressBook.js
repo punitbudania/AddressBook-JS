@@ -124,10 +124,12 @@ addressBook.forEach(contact => console.log(contact.toString()));
 let contact = searchPerson("Arif", addressBook);
 updateContact(contact, "Zip", 333027);
 console.log("Updated Contact: " + contact.toString());
+deleteContact("Tushar", addressBook);
+addressBook.forEach(contact => console.log(contact.toString()));
 
 function searchPerson(personName, addressBook)
 {
-    let contact;
+    let contact = null;
     addressBook.forEach(contactObject => {
         if (contactObject.firstName == personName)
         {
@@ -135,6 +137,19 @@ function searchPerson(personName, addressBook)
         }
     });
     return contact;
+}
+
+function deleteContact(personName, addressBook)
+{
+    let contact = searchPerson(personName, addressBook);
+    if (contact != null) 
+    {
+        return addressBook.filter(contactObject => contactObject != contact);
+    } 
+    else
+    {
+        console.log("Contact Not Found!");
+    }
 }
 
 function updateContact(contact, property, updatedEntry)
