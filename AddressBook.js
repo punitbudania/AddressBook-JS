@@ -142,6 +142,19 @@ console.log("person present in the city: " + personInCity("Arif", "Pilani", addr
 console.log("person present in the state: " + personInState("Tushar", "Delhi", addressBook1));
 console.log("persons in the city: " + searchByCity("Pilani", addressBook1));
 console.log("persons in the state: " + searchByState("Delhi", addressBook1));
+console.log("count persons by city: " + countByCity("Pilani", addressBook1));
+console.log("count persons by state: " + countByState("Delhi", addressBook1));
+
+
+function countByCity(cityName, book)
+{
+    return book.filter(contactObject => contactObject.city == cityName).reduce(count => count+1, 0);
+}
+
+function countByState(stateName, book)
+{
+    return book.filter(contactObject => contactObject.state == stateName).reduce(count => count+1, 0);
+}
 
 function searchByCity(cityName, book)
 {
