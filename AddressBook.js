@@ -140,6 +140,32 @@ console.log("After latest addition:-")
 addressBook1.forEach(contact => console.log(contact.toString()));
 console.log("person present in the city: " + personInCity("Arif", "Pilani", addressBook1));
 console.log("person present in the state: " + personInState("Tushar", "Delhi", addressBook1));
+console.log("persons in the city: " + searchByCity("Pilani", addressBook1));
+console.log("persons in the state: " + searchByState("Delhi", addressBook1));
+
+function searchByCity(cityName, book)
+{
+    let personList = new Array();
+    book.forEach(contactObject => {
+        if (contactObject.city == cityName)
+        {
+            personList.push(contactObject.firstName);
+        }
+    });
+    return personList;
+}
+
+function searchByState(stateName, book)
+{
+    let personList = new Array();
+    book.forEach(contactObject => {
+        if (contactObject.state == stateName)
+        {
+            personList.push(contactObject.firstName);
+        }
+    });
+    return personList;
+}
 
 function personInCity(personName, cityName, book)
 {
